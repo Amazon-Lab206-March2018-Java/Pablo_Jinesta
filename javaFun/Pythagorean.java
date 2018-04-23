@@ -9,6 +9,3 @@ public class Pythagorean {
     }
 }
 
-// Compile:
-// javac PythagoreanTest.java
-// java PythagoreanTest

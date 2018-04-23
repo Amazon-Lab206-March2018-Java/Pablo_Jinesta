@@ -6,7 +6,9 @@ public class PythagoreanTest{
     }
 }
 
-
+// Compile:
+// javac PythagoreanTest.java
+// java PythagoreanTest
 
 
 
