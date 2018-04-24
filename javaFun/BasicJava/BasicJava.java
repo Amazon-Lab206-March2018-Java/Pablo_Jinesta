@@ -38,21 +38,21 @@ public class BasicJava {
         System.out.println(print.greaterThanY(new int [] {1,3,5,7}, 3));
         
         // Square the values
-        System.out.println("\n\nSquare the values:");
+        System.out.println("\n\nSquare the values: [1, 5, 10, -2]");
         print.squareValues(new int [] {1, 5, 10, -2});
 
         // Eliminate Negative Numbers
-        System.out.println("\n\nEliminate Negative Numbers:");
+        System.out.println("\n\nEliminate Negative Numbers: [1, 5, 10, -2]");
         print.delNegativeNumbers(new int [] {1, 5, 10, -2});
 
         // Max, Min, and Average
-        System.out.println("\n\nMax, Min, and Average:");
+        System.out.println("\n\nMax, Min, and Average: [1, 5, 10, -2]");
         System.out.println(Arrays.toString(print.maxMinAve(new int [] {1, 5, 10, -2})));
 
         // Shifting the Values in the Array
-        System.out.println("\n\nShifting the Values in the Array");
+        System.out.println("\n\nShifting the Values in the Array: [1, 5, 10, 7, -2]");
         print.shiftingValues(new int [] {1, 5, 10, 7, -2});
-        
+
     }
 
     public void oneTo255() {
