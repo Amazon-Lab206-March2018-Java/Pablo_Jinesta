@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class PuzzleJava {
     public static void main(String[] args) {
@@ -23,7 +21,8 @@ public class PuzzleJava {
         // Create an array that contains all 26 letters of the alphabet (this array must have 26 values). 
         // Shuffle the array and display the last letter of the array. 
         // Have it also display the first letter of the array. If the first letter in the array is a vowel, have it display a message
-
+        System.out.println("\n\nCreate an array that contains all 26 letters of the alphabet. Shuffle the array and display the last letter of the array. Have it also display the first letter of the array. If the first letter in the array is a vowel, have it display a message");
+        doThis.partThree();
     }
 
     public ArrayList<Integer> partOne(int[] array, int x) {
@@ -66,8 +65,29 @@ public class PuzzleJava {
         return longnameArray;
 
     }
+
+    public void partThree(){
+        String[] alphabet = new String[] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        System.out.println("Alphabet: " + Arrays.toString(alphabet));
+
+        Collections.shuffle(Arrays.asList(alphabet));
+        System.out.println("Shuffle the array: " + Arrays.toString(alphabet));
+    
+        String last = alphabet[25];
+        System.out.println("Display the last letter of the array = " + last);
+  
+        String first = alphabet[0];
+        if ("a" == first || "e" == first || "i" == first || "o" == first || "u" == first ){
+            System.out.println("Attention: First letter in the array is a vowel = " + first);
+        } else{
+            System.out.println("First letter of the array = " + first);
+        }
+ 
+    }         
+
 }
 
 // Compile:
 // javac PuzzleJava.java
 // java PuzzleJava
+// git push origin2 master
