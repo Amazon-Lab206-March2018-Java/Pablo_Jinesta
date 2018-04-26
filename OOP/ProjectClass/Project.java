@@ -44,6 +44,6 @@ public class Project {
 
     // Create an instance method called elevatorPitch that will return the name and description separated by a colon.
     public String elevatorPitch() {
-        return name + " ; " + description;
+        return name + " : " + description;
     }
 }
