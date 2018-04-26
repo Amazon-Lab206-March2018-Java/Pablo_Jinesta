@@ -164,10 +164,11 @@ public class PuzzleJava {
             }
             randomStrings[z] = randomStr;
         }
+        ArrayList<String> randomStringList = new ArrayList<String>();
         for (String word : randomStrings) {
-            System.out.println(word);
+            randomStringList.add(word);
         }
-
+        System.out.println(randomStringList);
     }
 
 }
