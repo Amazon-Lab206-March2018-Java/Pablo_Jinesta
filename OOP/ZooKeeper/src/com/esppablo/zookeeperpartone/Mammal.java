@@ -11,7 +11,7 @@ public class Mammal {
 	
 	// The displayEnergy() method should show the animals energy level as well as return it.
 	public int displayEnergy() {
-		System.out.println("Gorilla Energy Levels is now at: " + energyLevel);
+		System.out.println("Gorilla Energy Levels are now at: " + energyLevel);
 		return energyLevel;
 	}
 	
