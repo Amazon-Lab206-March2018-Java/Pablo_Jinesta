@@ -1,0 +1,19 @@
+package com.esppablo.zookeeperpartone;
+
+
+public class Mammal {
+	// Tasks:
+	// Create a Mammal class that has an energyLevel and displayEnergy() method. 
+	public int energyLevel;
+	
+	// Every mammal should have an energy level (default 100).
+	public void energyLevel() {
+		energyLevel = 100;
+	}
+	
+	// The displayEnergy() method should show the animals energy level as well as return it.
+	public int displayEnergy() {
+		System.out.println(energyLevel);
+		return energyLevel;
+	}
+}
