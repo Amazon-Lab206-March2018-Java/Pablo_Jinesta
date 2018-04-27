@@ -1,7 +1,5 @@
 import java.util.*;
 
-import javax.xml.transform.sax.TemplatesHandler;
-
 // Create a SinglyLinkedList class with the head attribute
 
 public class SinglyLinkedList {
