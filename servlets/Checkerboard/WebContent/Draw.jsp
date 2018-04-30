@@ -21,6 +21,7 @@
 			<p><a href="http://localhost:8080/Checkerboard/Draw.jsp">Checkerboard</a></p>
 	
 		<h1>Checkerboard <%= columns %>w x <%= rows %>h </h1>
+		
 		<!-- Columns -->
 		<% for(int row = 0; row < rows; row++) {  %>
 		
@@ -57,7 +58,9 @@
 	
 		<h1>Build a new Checkerboard replacing URL params:</h1>
 		<p>Sample 8x4: <a href="http://localhost:8080/Checkerboard/Draw.jsp?width=8&height=4">http://localhost:8080/Checkerboard/Draw.jsp?width=8&height=4</a></p>
-		
+		<p>Sample 2x2: <a href="http://localhost:8080/Checkerboard/Draw.jsp?width=2&height=2">http://localhost:8080/Checkerboard/Draw.jsp?width=2height=2</a></p>
+		<p>Sample 12x12: <a href="http://localhost:8080/Checkerboard/Draw.jsp?width=12&height=12">http://localhost:8080/Checkerboard/Draw.jsp?width=12&height=12</a></p>
+
 		<h1>Default Checkerboard 5w x 3h </h1>
 	
 		<!-- Columns -->
