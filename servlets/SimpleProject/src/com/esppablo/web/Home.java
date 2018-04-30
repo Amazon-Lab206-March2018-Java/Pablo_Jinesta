@@ -47,7 +47,7 @@ public class Home extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         if (request.getParameter("firstName") == null || request.getParameter("lastName") == null) {
-        	out.write("<h1>Welcome!</h1>");
+        	out.write("<h1>Welcome Ninja!</h1>");
         } else {
         	out.write("<h1>Welcome, " + firstName + " " + lastName + "</h1>");
         }
