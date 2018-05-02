@@ -17,14 +17,15 @@ public class ExcepGenLists {
         myList.add("hello world");
         myList.add(48);
         myList.add("Goodbye World");
-        for (Object value : myList) {
-            try {
-                Integer castedValue = (Integer) value;
-                System.out.println(castedValue);
-            } catch (Exception e) {
-                System.out.println("ERROR ON INDEX {#} " + myList.indexOf(value));
-            }
-        }
+
+        // for (Object value : myList) {
+        //     try {
+        //         Integer castedValue = (Integer) value;
+        //         System.out.println(castedValue);
+        //     } catch (Exception e) {
+        //         System.out.println("ERROR ON INDEX {#} " + myList.indexOf(value));
+        //     }
+        // }
     }
 }
 

@@ -8,14 +8,13 @@ public class Human {
 	public int strength;
 	public int stealth;
 	public int intelligence;
-	
-	// Add the health attribute with a default of 100
 	public int health;
 	
 	public Human() {
 		strength = 3;
 		stealth = 3;
 		intelligence = 3;
+		// Add the health attribute with a default of 100
 		health = 100;
 	}
 	
