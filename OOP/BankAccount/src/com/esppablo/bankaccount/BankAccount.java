@@ -19,10 +19,10 @@ public class BankAccount {
 	public double savingsBalance;
 	
 	// Create a class member (static) that has the number of accounts created thus far.
-	private static int numberOfAccounts = 0;
+	public static int numberOfAccounts = 0;
 	
 	// Create a class member (static) that tracks the total amount of money stored in every account created.
-	private static double totalMoney = 0;
+	public static double totalMoney = 0;
 	
 	// Create a private method that returns a random ten digit account number.
 	private String newAccNum() {
@@ -59,24 +59,40 @@ public class BankAccount {
 		return savingsBalance;
 	}
     
-    // Return Accounts Count
-    public static int accountsCount() {
-        return numberOfAccounts;
-    }
-    
-    // Return Total Bank Account
-    public static double moneyCount() {
-        return totalMoney;
-    }
-    
+   
     // Create a method that will allow a user to deposit money into either the checking or saving, be sure to add to total amount stored.
-	public void depositMoney() {
+	public void depositMoney(String account, double ammount) {
+		if (account == "checking" || account == "savings") {
+			if (account == "checking") {
+				checkingBalance += ammount;
+				totalMoney += ammount;
+			}
+			if (account == "savings") {
+				savingsBalance += ammount;
+				totalMoney += ammount;
+			}
+		}
+		else {
+			System.out.println("Error: Account Type ["+ account + "] is not valid. Please enter a checking or savings account.");
+		}
 		
 	}
 	
 	// Create a method to withdraw money from one balance. Do not allow them to withdraw money if there are insufficient funds.
-	public void withdrayMoney() {
-		
+	public void withdrawMoney(String account, double ammount) {
+		if (ammount < checkingBalance || ammount < savingsBalance) {
+			if (account == "checking") {
+				checkingBalance -= ammount;
+				totalMoney -= ammount;
+			}
+			if (account == "savings") {
+				savingsBalance -= ammount;
+				totalMoney -= ammount;
+			}
+		}
+		else {
+			System.out.println("Sorry, insufficient funds!");
+		}
 	}
 	
 	// Create a method to see the total money from the checking and saving.
