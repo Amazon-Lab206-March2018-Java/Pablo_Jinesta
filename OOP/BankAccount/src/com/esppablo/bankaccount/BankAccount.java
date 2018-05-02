@@ -3,7 +3,6 @@ import java.util.Random;
 
 // Create a BankAccount class
 
-// We are going to create a BankAccount class. 
 // This class will recreate some of the common account transactions that normally occur for a bank 
 // account such as displaying your account number, checking and savings amount, total amount. 
 // Of course, there are also methods to invoke, such as depositing a check, checking your balance, 
@@ -59,21 +58,22 @@ public class BankAccount {
 		return savingsBalance;
 	}
     
-   
     // Create a method that will allow a user to deposit money into either the checking or saving, be sure to add to total amount stored.
 	public void depositMoney(String account, double ammount) {
 		if (account == "checking" || account == "savings") {
 			if (account == "checking") {
 				checkingBalance += ammount;
 				totalMoney += ammount;
+				System.out.println("Message: Successful Deposit to checking account!");
 			}
 			if (account == "savings") {
 				savingsBalance += ammount;
 				totalMoney += ammount;
+				System.out.println("Message: Successful Deposit to savings account!");
 			}
 		}
 		else {
-			System.out.println("Error: Account Type ["+ account + "] is not valid. Please enter a checking or savings account.");
+			System.out.println("Error: The Account Type \""+ account + "\" you entered is not valid. Please enter a \"checking\" or \"savings\" account.");
 		}
 		
 	}
@@ -84,14 +84,16 @@ public class BankAccount {
 			if (account == "checking") {
 				checkingBalance -= ammount;
 				totalMoney -= ammount;
+				System.out.println("Message: Successful Withdray to checking account!");
 			}
 			if (account == "savings") {
 				savingsBalance -= ammount;
 				totalMoney -= ammount;
+				System.out.println("Message: Successful Withdray to savings account!");
 			}
 		}
 		else {
-			System.out.println("Sorry, insufficient funds!");
+			System.out.println("Error: Sorry, insufficient funds!");
 		}
 	}
 	
@@ -99,6 +101,9 @@ public class BankAccount {
 	public void totalAccountMoney() {
 		System.out.println("Status Checking Account Balance: $" + getCheckingBalance());
 		System.out.println("Status Savings Account Balance: $" + getSavingsBalance());
+		
+		double totals = getSavingsBalance() + getCheckingBalance();
+		System.out.println("Total Bank Account Founds: $" + totals);
 	}
 }
 ;
