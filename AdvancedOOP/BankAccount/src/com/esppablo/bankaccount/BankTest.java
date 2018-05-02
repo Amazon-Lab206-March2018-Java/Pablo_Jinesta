@@ -8,7 +8,9 @@ public class BankTest {
 		BankAccount client1 = new BankAccount();
 		BankAccount client2 = new BankAccount();
 		BankAccount client3 = new BankAccount();
-				
+		BankAccount client4 = new BankAccount();
+		BankAccount client5 = new BankAccount();
+		
 		// Number of Bank Accounts
 		System.out.println("Number of Bank Clients: " + BankAccount.numberOfAccounts);
 		System.out.println("\n##################\n");
@@ -43,7 +45,22 @@ public class BankTest {
 		System.out.println("Client Account ID: " + client3.accountNumber);
 		System.out.println();
 		client3.totalAccountMoney();
-	
+		
+		System.out.println("\n##################\n");
+
+		// Client 4
+		System.out.println("Client Account ID: " + client4.accountNumber);
+		System.out.println();
+		client4.totalAccountMoney();
+		
+		System.out.println("\n##################\n");
+
+		// Client 5
+		System.out.println("Client Account ID: " + client5.accountNumber);
+		System.out.println();
+		client5.totalAccountMoney();
+		
+		
 	}
 
 }
