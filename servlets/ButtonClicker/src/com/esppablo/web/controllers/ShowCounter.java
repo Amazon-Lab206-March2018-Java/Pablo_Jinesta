@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.esppablo.web.models.Count;
-
 /**
  * Servlet implementation class ShowCounter
  */
@@ -38,16 +36,12 @@ public class ShowCounter extends HttpServlet {
 		// Process Request:
 		HttpSession session = request.getSession();
 		if (session.getAttribute("count") == null) {
-			Count count = (Count) session.getAttribute("count");
-			int counter = 0;
-			count.setCount(counter);
-			session.setAttribute("count", count);
+			session.setAttribute("count", 0);
 		}
 		
 		else {
-			Count count = (Count) session.getAttribute("count");
-			int counter = count.getCount()+1;
-			count.setCount(counter);
+			int count = (Integer) session.getAttribute("count");
+			count++;
 			session.setAttribute("count", count);
 
 		}
