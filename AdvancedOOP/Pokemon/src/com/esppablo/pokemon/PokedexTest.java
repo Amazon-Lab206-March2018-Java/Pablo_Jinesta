@@ -6,11 +6,11 @@ public class PokedexTest {
 		// Pokedex tell us information about Pokemon characters:
 		Pokedex newPokedex = new Pokedex();
 		
-		// Crearte megatron
+		// Crearte Megatrun
 		Pokemon megatron = newPokedex.createPokemon("Megatrun", 100, "Deceptimon");
-		// Action: Atack megatron
+		// Action: Atack Megatrun
 		newPokedex.attackPokemon(megatron);
-		// Display Info megatron
+		// Display Info Megatrun
 		System.out.println(newPokedex.pokemonInfo(megatron));
 		
 	}
