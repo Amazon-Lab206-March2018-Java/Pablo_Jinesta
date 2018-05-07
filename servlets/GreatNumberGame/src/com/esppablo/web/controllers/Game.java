@@ -48,6 +48,7 @@ public class Game extends HttpServlet {
 
 		if (session.getAttribute("thinkNumber") == null) {
 			session.setAttribute("thinkNumber", newGreatNumber());
+			request.setAttribute("action", "Submit");
 		}		
 		System.out.println(session.getAttribute("thinkNumber"));
 
@@ -73,16 +74,20 @@ public class Game extends HttpServlet {
 		if (guess == thinkNumber){
 			System.out.println(guess + " was the number");
 	        request.setAttribute("message", guess + " was the number!");
+	        session.setAttribute("thinkNumber", newGreatNumber());
+	        request.setAttribute("action", "Play Again!");
 		}
 		
 		else if (guess > thinkNumber){
 			System.out.println("Too high!");
 	        request.setAttribute("message", "Too High!");
+
 		}
 		
 		else if (guess < thinkNumber){
 			System.out.println("Too low!");
 	        request.setAttribute("message", "Too low!");
+
 		}
 		
 		doGet(request, response);

@@ -17,8 +17,8 @@
 		<p><c:out value="${message}"/></p>
 		
         <form action='' method='POST'>
-            <input type="number" name="guess" required>
-            <input type='submit' value='Submit'>
+            <input type="number" name="guess" min="1" max="100" required>
+            <input type='submit' value='<c:out value="${action}"/>'>
         </form>
         
     </div>
