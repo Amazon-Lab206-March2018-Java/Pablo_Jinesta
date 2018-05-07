@@ -64,22 +64,25 @@ public class Game extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		int thinkNumber = (int) session.getAttribute("thinkNumber");
 
 		// Retain the value of the number across incorrect guesses while providing feedback to the user
-		System.out.println(Integer.parseInt(request.getParameter("guess")));
-		int thinkNumber = (int) session.getAttribute("thinkNumber");
 		int guess = Integer.parseInt(request.getParameter("guess"));
-		
+		System.out.println(Integer.parseInt(request.getParameter("guess")));
+
 		if (guess == thinkNumber){
 			System.out.println(guess + " was the number");
+	        request.setAttribute("message", guess + " was the number!");
 		}
 		
 		else if (guess > thinkNumber){
 			System.out.println("Too high!");
+	        request.setAttribute("message", "Too High!");
 		}
 		
 		else if (guess < thinkNumber){
 			System.out.println("Too low!");
+	        request.setAttribute("message", "Too low!");
 		}
 		
 		doGet(request, response);
