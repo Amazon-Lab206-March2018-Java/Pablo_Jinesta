@@ -19,18 +19,11 @@ public class Game extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	private String newGreatNumber() {
+	private static int newGreatNumber() {
 		
 		Random randomGreatNumber = new Random();
-		String digits = "0123456789";
-		String greatNumber = "";
-		
-		for(int i = 0; i < 2; i++) {
-			int newrandomGreatNumber = (int)randomGreatNumber.nextInt(10);
-			greatNumber += digits.charAt(newrandomGreatNumber);
-		}
-		
-		return greatNumber;
+		int randomNum = 1 + randomGreatNumber.nextInt((100 - 1) + 1);
+		return randomNum;
 		
 	}
 	
@@ -70,11 +63,24 @@ public class Game extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 
 		// Retain the value of the number across incorrect guesses while providing feedback to the user
 		System.out.println(Integer.parseInt(request.getParameter("guess")));
-
-
+		int thinkNumber = (int) session.getAttribute("thinkNumber");
+		int guess = Integer.parseInt(request.getParameter("guess"));
+		
+		if (guess == thinkNumber){
+			System.out.println(guess + " was the number");
+		}
+		
+		else if (guess > thinkNumber){
+			System.out.println("Too high!");
+		}
+		
+		else if (guess < thinkNumber){
+			System.out.println("Too low!");
+		}
 		
 		doGet(request, response);
 	}
