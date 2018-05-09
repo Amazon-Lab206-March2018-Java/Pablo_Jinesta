@@ -1,0 +1,40 @@
+#main{
+    width: 970px;
+    margin: 0 auto;
+}
+
+input{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#activities{
+	border: 2px solid slategray;
+	padding: 10px;
+	margin-top: 5px;	
+	height: 200px;
+	overflow-y: auto;
+}
+
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+
+#gold{
+    text-align: left;
+}
+
+#places{
+    text-align: center;
+}
+
+.place {
+    width: 235px;
+    height: 170px;
+    border: 2px solid slategray;
+    display: inline-block;
+}
