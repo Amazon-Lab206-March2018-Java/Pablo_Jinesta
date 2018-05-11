@@ -45,7 +45,7 @@ public class Books {
     }
 
     @PostMapping("/new")
-    public String createBook(@ModelAttribute("book") Book book, BindingResult result) {
+    public String createBook(@Valid @ModelAttribute("book") Book book, BindingResult result) {
         if (result.hasErrors()) {
             return "newBook";
         } else {
@@ -61,7 +61,7 @@ public class Books {
         if (book != null){
             model.addAttribute("book", book);
             return "editBook";
-        }else{
+        } else {
             return "redirect:/";
         }
     }
@@ -70,7 +70,7 @@ public class Books {
     public String updateBook(@PathVariable("id") int id, @Valid @ModelAttribute("book") Book book, BindingResult result) {
         if (result.hasErrors()) {
             return "editBook";
-        }else{
+        } else {
             bookService.updateBook(id, book);
             return "redirect:/";
         }
