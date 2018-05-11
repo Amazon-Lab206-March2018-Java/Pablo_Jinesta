@@ -10,10 +10,11 @@
 </head>
 <body>
 	<a href="/">Dashboard</a>
-	<p><c:out value="${language.name}"/></p>
-	<p><c:out value="${language.creator}"/></p>
-	<p><c:out value="${language.currentVersion}"/></p>
-	<a href="/edit/${index}">Edit</a>
-	<a href="/delete/${index}">Delete</a>
+	<p>Name: <c:out value="${language.name}"/></p>
+	<p>Creator: <c:out value="${language.creator}"/></p>
+	<p>Version: <c:out value="${language.currentVersion}"/></p>
+	<p>Created at: <c:out value="${language.createdAt}"/></p>
+	<a href="/edit/${language.id}">Edit</a>
+	<a href="/delete/${language.id}">Delete</a>
 </body>
 </html>

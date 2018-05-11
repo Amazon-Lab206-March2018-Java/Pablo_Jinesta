@@ -28,21 +28,20 @@ public class Languages {
 	@RequestMapping("/")
 	public String languages(Model model, @ModelAttribute("language") Language language) { 
 		List<Language> languages = languageService.allLanguages();
-		
 		model.addAttribute("languages", languages);
 		return "index";
 	}
 	
-    @RequestMapping("/{index}")
-    public String findLanguageByIndex(Model model, @PathVariable("index") int index) {
-        Language language = languageService.findLanguageByIndex(index);
-        model.addAttribute("language", language);
+    @RequestMapping("/{id}")
+    public String findLanguageByIndex(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("language", languageService.findLanguageById(id));
         return "showLanguage";
     }
        
-    @PostMapping("/")
-    public String createLanguage(@Valid @ModelAttribute("language") Language language, BindingResult result) {
+    @PostMapping("/add")
+    public String createLanguage(Model model, @Valid @ModelAttribute("language") Language language, BindingResult result) {
         if (result.hasErrors()) {
+        	model.addAttribute("languages", languageService.allLanguages());
             return "index"; 
         } else {
             // Add the language
@@ -52,8 +51,8 @@ public class Languages {
     }
     
     @RequestMapping("/edit/{id}")
-    public String editLanguage(@PathVariable("id") int id, Model model) {
-    	Language language = languageService.findLanguageByIndex(id);
+    public String editLanguage(@PathVariable("id") Long id, Model model) {
+    	Language language = languageService.findLanguageById(id);
     	if (language != null) {
     		model.addAttribute("language", language);
     		return "editLanguage";
@@ -63,17 +62,17 @@ public class Languages {
     }
     
     @PostMapping("/edit/{id}")
-    public String updateLanguage(@PathVariable("id") int id, @Valid @ModelAttribute("language") Language language, BindingResult result) {
+    public String updateLanguage(@PathVariable("id") Long id, @Valid @ModelAttribute("language") Language language, BindingResult result) {
         if (result.hasErrors()) {
             return "editLanguage";
         } else {
-            languageService.updateLanguage(id, language);
+        	languageService.updateLanguage(language);
             return "redirect:/" + id;
         }
     }
 	
     @RequestMapping("/delete/{id}")
-    public String destroyLanguage(@PathVariable("id") int id) {
+    public String destroyLanguage(@PathVariable("id") Long id) {
         languageService.destroyLanguage(id);
         return "redirect:/";
     }
