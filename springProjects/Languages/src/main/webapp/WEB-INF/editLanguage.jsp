@@ -9,20 +9,28 @@
 	<title>Edit Language</title>
 </head>
 <body>
+	<a href="/delete/${index}">Delete</a>
+	<a href="/">Dashboard</a>
+
 	<form:form method="POST" action="/edit/${id}" modelAttribute="language">
-	    <form:label path="name">Name
-	    <form:errors path="name"/>
-	    <form:input path="name"/></form:label>
-	    
-	    <form:label path="creator">Creator
-	    <form:errors path="creator"/>
-	    <form:input path="creator"/></form:label>
-	    
+	    <p>
+		    <form:label path="name">Name
+		    <form:errors path="name"/>
+		    <form:input path="name"/></form:label>
+	    </p>
+	    <p>    
+		    <form:label path="creator">Creator
+		    <form:errors path="creator"/>
+		    <form:input path="creator"/></form:label>
+	    </p>
+	    <p>
 	    <form:label path="currentVersion">Version
 	    <form:errors path="currentVersion"/>
 	    <form:input path="currentVersion"/></form:label>
+	    </p>
 	    	    
 	    <input type="submit" value="Submit"/>
 	</form:form>
+	
 </body>
 </html>
