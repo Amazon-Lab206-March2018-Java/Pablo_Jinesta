@@ -1,6 +1,6 @@
 package com.esppablo.relationships.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -31,12 +33,29 @@ public class License {
     @JoinColumn(name="person_id")
     private Person person;
     
-    public License() {
-        
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
+    
+    public License(String number, Date expiration_date, String state) {
+    	this.number = number;
+    	this.expiration_date = expiration_date;
+    	this.state= state;        
     }
     
     // getters and setters 
-    
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getNumber() {
 		return number;
 	}

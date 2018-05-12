@@ -1,6 +1,6 @@
 package com.esppablo.relationships.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -28,13 +30,34 @@ public class Person {
     
     @OneToOne(mappedBy="person", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private License license;
+ 
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
     
     public Person() {
-        
+
+    }
+    
+    public Person(String firstname, String lastname) {
+        this.firstName = lastname;
+        this.lastName = lastname;
     }
     
     // getters and setters 
-
+    
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
