@@ -1,4 +1,4 @@
-package com.esppablo.languages.models;
+package com.esppablo.lookify.models;
 
 import java.util.Date;
 
@@ -10,30 +10,32 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="languages") 
-public class Language {
+@Table(name="songs")
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column
-	@Size(min = 2, max = 20)
-    private String name;
-	
-    @Column
-	@Size(min = 2, max = 20)
-    private String creator;
-	
-    @Column(nullable = false)
-    @NotEmpty	
-    private String currentVersion;
+    @Size(min = 4, max = 100)
+    private String title;
     
- 	// This will not allow the createdAt column to be updated after creation
+    @Column
+    @Size(min = 4, max = 50)
+    private String artist;
+    
+    @Column
+    @Min(1)
+    @Max(10)
+    private int rating;
+    
     @Column(updatable=false)
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
     private Date createdAt;
@@ -41,20 +43,19 @@ public class Language {
     @Column
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
     private Date updatedAt;
+    
+    public Song() {
+    	title = "";
+    	artist = "";
+    	rating = 0;
+    }
+    
+    public Song(String title, String artist, int rating) {
+    	this.title = "";
+    	this.artist = "";
+    	this.rating = 0;
+    }
 
-	
-	public Language() {
-		name = "";
-		creator = "";
-		currentVersion = "";
-	}
-	
-	public Language(String name, String creator, String currentVersion) {
-		this.name = name;
-		this.creator = creator;
-		this.currentVersion = currentVersion;
-	}
-	
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -64,6 +65,7 @@ public class Language {
         this.updatedAt = new Date();
     }
     
+    // getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -71,25 +73,26 @@ public class Language {
 		this.id = id;
 	}
 	
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getCreator() {
-		return creator;
-	}
-	public void setCreator(String creator) {
-		this.creator = creator;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
-	public String getCurrentVersion() {
-		return currentVersion;
+	public String getArtist() {
+		return artist;
 	}
-	public void setCurrentVersion(String currentVersion) {
-		this.currentVersion = currentVersion;
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	
+	public int getRating() {
+		return rating;
+	}
+	
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	
 	public Date getCreatedAt() {
@@ -105,8 +108,4 @@ public class Language {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-
-
-	
 }
