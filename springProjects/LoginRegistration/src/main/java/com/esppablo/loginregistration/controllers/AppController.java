@@ -62,5 +62,4 @@ public class AppController {
         return "dashboard";
     }
 
-    
 }
