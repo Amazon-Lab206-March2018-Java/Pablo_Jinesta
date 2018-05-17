@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +11,17 @@
 	<title>Login &amp; Registration</title>
 </head>
 <body>
-	<h1>Login</h1>
+    <c:if test="${logoutMessage != null}">
+        <c:out value="${logoutMessage}"></c:out>
+    </c:if>
+    
+    <c:out value="${registrationMessage}"></c:out>
+    
+    <h1>Login</h1>
+    <c:if test="${errorMessage != null}">
+        <c:out value="${errorMessage}"></c:out>
+    </c:if>
+    
 	<form method="POST" action="/login">
         <p>
             <label for="email">Email</label>
@@ -27,9 +36,10 @@
     </form>
 		
 	<h1>Registration</h1>
-    <p><form:errors path="user.*"/></p>
+    <p><form:errors path="new_user.*"/></p>
     
     <form:form method="POST" action="/registration" modelAttribute="new_user">
+        
         <p>
             <form:label path="email">Email:</form:label>
             <form:input path="email"/>

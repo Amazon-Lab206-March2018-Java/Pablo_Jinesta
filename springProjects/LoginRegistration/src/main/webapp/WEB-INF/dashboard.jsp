@@ -5,14 +5,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Dashboard</title>
 </head>
 <body>
     <h1>Welcome <c:out value="${currentUser.firstName}"></c:out>!</h1>
     
     <div id="user-info">
     	<p>First Name: <c:out value="${currentUser.firstName}"></c:out></p>
+    	<p>Last Name: <c:out value="${currentUser.lastName}"></c:out></p>
+    	<p>Email: <c:out value="${currentUser.email}"></c:out></p>
+    	<p>Sign up date: <c:out value="${currentUser.createdAt}"></c:out></p>    	
     </div>
     
     <form id="logoutForm" method="POST" action="/logout">

@@ -29,29 +29,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	 
+	// Validate email
 	@Column
 	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
 	private String email;
 	
-//	@Column
-//	@Size(min=1, max=25)
-//	private String username;
+	//	@Column
+	//	@Size(min=1, max=25)
+	//	private String username;
 	
+	// Validate first and last name (>0 characters)
 	@Column
-	@Size(min=1, max=25)
+	@Size(min=1, max=25, message="First Name is required")
 	private String firstName;
 	
 	@Column
-	@Size(min=1, max=25)
+	@Size(min=1, max=25, message="Last Name is required")
 	private String lastName;
 	 
+	// Validate passwords (matching >= 10 characters)
 	@Column
-	@Size(min=10)
+	@Size(min=10, message="Password must be greater than 10 characters")
 	private String password;
 	 
 	@Transient
-	@Column
-	@Size(min=10)
 	private String passwordConfirmation;
 	 
 	@Column(updatable=false)
