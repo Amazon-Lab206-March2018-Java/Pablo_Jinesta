@@ -2,6 +2,7 @@ package com.esppablo.loginregistration.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +27,11 @@ public class AppController {
         return "index";
     }
     
-    @PostMapping("/login")
-    public String login() {
-    	// code here
-    	return "index";
+    @RequestMapping(value = {"/", "/dashboard"})
+    public String dashboard(Principal principal, Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        return "dashboard";
     }
     
     @PostMapping("/registration")
@@ -42,6 +44,7 @@ public class AppController {
     	}
     }
     
-    
+
+
     
 }
