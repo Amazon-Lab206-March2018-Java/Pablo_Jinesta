@@ -17,6 +17,7 @@
 <body>
 	<div class="container">
 	    <h1>Welcome <c:out value="${currentUser.firstName}"></c:out> <span>(Admin)</span></h1>
+	    <h6><a href="/">Dashboard</a></h6>
 	    
 	    <table class="u-full-width">
 	    	<thead>

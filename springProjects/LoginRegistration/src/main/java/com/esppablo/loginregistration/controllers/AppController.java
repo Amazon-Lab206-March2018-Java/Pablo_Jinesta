@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,6 +59,20 @@ public class AppController {
     	}
     }
     
+    // Allow admins to escalate non-admins to admin status
+    @RequestMapping("/admin/make-admin/{id}")
+    public String makeAdmin(@PathVariable("id") Long id) {
+    	userService.makeAdmin(userService.findUserById(id));
+    	return "redirect:/admin";
+    }
+    
+    // Allow admins to delete non-admin accounts
+    @RequestMapping("/admin/delete/{id}")
+    public String deleteNonAdminUser(@PathVariable("id") Long id) {
+    	userService.deleteUserById(id);
+    	return "redirect:/admin";
+    }
+    
     // Create a dashboard page that is only accessible to logged in users
     @RequestMapping(value = {"/", "/dashboard"})
     public String dashboard(Principal principal, Model model) {
@@ -76,9 +91,10 @@ public class AppController {
         model.addAttribute("admin", userService.findByRoleName("ROLE_ADMIN"));
         // Get all users (delete | make-admin)
         model.addAttribute("users", userService.allUsers());
-        System.out.println("Users: " + userService.allUsers());
         return "adminPage";
     }
+    
+    
 
 
 }

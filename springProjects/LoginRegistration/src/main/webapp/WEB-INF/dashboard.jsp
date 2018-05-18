@@ -20,6 +20,7 @@
 	<div class="container">
 	
 	    <h1>Welcome <c:out value="${currentUser.firstName}"></c:out>!</h1>
+	    <h6><a href="/admin">Admin Dashboard</a></h6>
 	    
 	    <div id="user-info">
 	    	<p>First Name: <c:out value="${currentUser.firstName}"></c:out></p>
@@ -33,6 +34,7 @@
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	        <input class="button-primary" type="submit" value="Logout!" />
 	    </form>
+	    
     </div>
 </body>
 </html>

@@ -50,6 +50,16 @@ public class UserService {
     	return userRepository.findAll();
     }
     
+    // find user by ID
+    public User findUserById(Long id) {
+    	return userRepository.findById(id).get();
+    }
+    
+    // delete user by ID
+    public void deleteUserById(Long id) {
+    	userRepository.deleteById(id);
+    }
+    
     // make-admin
     public void makeAdmin(User user) {
         user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
