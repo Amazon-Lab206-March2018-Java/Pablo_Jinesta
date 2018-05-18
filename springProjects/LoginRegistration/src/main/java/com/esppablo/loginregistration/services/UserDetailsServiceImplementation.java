@@ -1,6 +1,7 @@
 package com.esppablo.loginregistration.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +30,9 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
         if(user == null) {
             throw new UsernameNotFoundException("User not found");
         }
+        
+        user.setLastSignIn(new Date());
+        userRepository.save(user);
         
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthorities(user));
     }

@@ -43,13 +43,17 @@ public class AppController {
     // Create an app that will allow users to register
     
     @PostMapping("/registration")
-    public String register(@Valid @ModelAttribute("new_user") User user, BindingResult result, Model model, HttpSession sessio) {
+    public String register(@Valid @ModelAttribute("new_user") User user, BindingResult result, Model model, HttpSession session) {
     	userValidator.validate(user, result);
     	if(result.hasErrors()) {
     		return "index";
     	} else {
     		model.addAttribute("registrationMessage", "Registration Successful. Continue to login.");
-	        userService.saveWithUserRole(user);
+    		if (userService.allUsers().size() == 0) {
+    			userService.saveUserWithAdminRole(user);
+    		} else {
+    			userService.saveWithUserRole(user);
+    		}
 	        return "index";  	
     	}
     }
@@ -61,5 +65,20 @@ public class AppController {
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "dashboard";
     }
+    
+    // Create a new admin dashboard page that shows all users
+    @RequestMapping("/admin")
+    public String adminPage(Principal principal, Model model) {
+        String username = principal.getName();
+        // Get current user (admin)
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        // Get user by admin role
+        model.addAttribute("admin", userService.findByRoleName("ROLE_ADMIN"));
+        // Get all users (delete | make-admin)
+        model.addAttribute("users", userService.allUsers());
+        System.out.println("Users: " + userService.allUsers());
+        return "adminPage";
+    }
+
 
 }

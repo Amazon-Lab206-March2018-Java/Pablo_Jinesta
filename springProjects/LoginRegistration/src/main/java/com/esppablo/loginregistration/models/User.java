@@ -62,7 +62,11 @@ public class User {
 	@Column
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
-
+	
+	@Column
+	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
+	private Date lastSignIn;
+	
 	@PrePersist
 	protected void onCreate(){
 	    this.createdAt = new Date();
@@ -110,13 +114,20 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 //	public String getUsername() {
 //	    return username;
 //	}
 //	public void setUsername(String username) {
 //	    this.username = username;
 //	}
+	
+	public Date getLastSignIn() {
+		return lastSignIn;
+	}
+	public void setLastSignIn(Date lastSignIn) {
+		this.lastSignIn = lastSignIn;
+	}
 	
 	public String getPassword() {
 	    return password;
